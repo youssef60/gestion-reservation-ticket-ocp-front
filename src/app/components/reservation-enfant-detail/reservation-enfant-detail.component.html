@@ -1,0 +1,14 @@
+<div class="col-md-12 d-flex my-3 ps-0 ">
+    <div *ngIf="(age >=0 && age <2 ) || age >= 21  " class="col-md-3 text-center ">non bénéficiaire </div>
+    <div *ngIf=" age >=2 && age < 12" class="col-md-3 text-center ">Enfant </div>
+    <div *ngIf="age >= 12 && age < 21 " class="col-md-3 text-center ">Adulte </div>
+
+    <div class="border"></div>
+    <div class="col-md-3 text-center text-style ">{{enfant?.nom}} </div>
+    <div class="border"></div>
+    <div class="col-md-3 text-center text-style "> {{enfant?.prenom}} </div>
+    <div class="border"></div>
+    <div class="col-md-3 text-center text-style "> {{age}} ans </div>
+    <div class="border"></div>
+
+</div>

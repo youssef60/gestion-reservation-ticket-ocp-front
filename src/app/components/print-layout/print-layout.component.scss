@@ -1,0 +1,26 @@
+.header,
+.header-space,
+.footer,
+.footer-space {
+    height: 100px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+   
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    font-size: 18px;
+    font-weight: 500;
+    left: 65%;
+}
+
+@media screen {
+    :host {
+        display: none;
+    }
+}

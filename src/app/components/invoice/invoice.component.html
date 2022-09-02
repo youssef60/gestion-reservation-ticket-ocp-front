@@ -1,0 +1,23 @@
+<div class=" invoice"  *ngFor="let ticket of collaborateur?.tickets; let i = index">
+    <div style="  margin-bottom: 270px; margin-left:750px ;">khouribga le {{today}}</div>
+    <div class="main-content">
+        <div class="mb-3">Objet : ordre d'encaissement</div>
+        <div class="mb-5">Réf : votre demande numero :</div>
+        <div class="mb-3">Veuillez encaisser aupres de Mle, Monsieur {{collaborateur?.nom}} {{collaborateur?.prenom}} </div>
+        <div class="mb-4">la somme de : {{ticket.total}} DH</div>
+        <div class="mb-4">Cette somme représente les frais de participation au piscine {{ticket.typeTicket?.type}} {{ticket.typeTicket?.ville}}</div>
+        <div class="mb-4">
+            Numero de compte OCP 007 400 400 000 097 400 000 110 202 ATTIJARI WAFABANK,sis 28 Place AL MOUJAHIDINE
+        </div>
+        <div class="mb-3">
+            Nb: la date limite de paiement est le {{afterTomorrow}}
+        </div>
+        <div class="mb-5">
+            Au-dela de cette date,votre demande sera annulée
+        </div >
+        <div>Nombre Adultes : {{ticket.nbrTicketAdulte}}</div>
+        <div>Nombre Enfants : {{ticket.nbrTicketEnfant}}</div>
+    </div>
+    
+</div>
+

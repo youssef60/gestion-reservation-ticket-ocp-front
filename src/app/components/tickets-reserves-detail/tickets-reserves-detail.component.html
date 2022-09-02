@@ -1,0 +1,17 @@
+<div *ngFor="let ticket of collaborateur?.tickets" class="col d-flex flex-row card py-4 pr-4 pe-2 mb-2">
+            <div class=" col-1  my-auto text-center">{{collaborateur?.matricule}}</div>
+            <div class="border"></div>
+            <div class=" col-2 text-center  my-auto text-center">{{collaborateur?.nom}}</div>
+            <div class="border"></div>
+            <div class=" col-2  my-auto text-center">{{collaborateur?.prenom}}</div>
+            <div class="border"></div>
+            <div class=" col-2  my-auto text-center">{{ticket?.typeTicket?.type}}</div>
+            <div class="border"></div>
+            <div class=" col-1  my-auto text-center">{{ticket?.nbrTicketAdulte}}</div>
+            <div class="border"></div>
+            <div class=" col-1  my-auto text-center">{{ticket?.nbrTicketEnfant}}</div>
+            <div class="border"></div>
+            <div class=" col-2  my-auto text-center">{{ticket?.total}}</div>
+            <div class="border"></div>
+            <div (click)="removeTicket(ticket?.id!) ; refrechData()" class=" col-1  my-auto text-center"><a [routerLink]="['/ticketsReseves']" routerLinkActive="router-link-active"  href=""><i style="font-size: 20px; color : rgb(241, 58, 58); " class="bi bi-trash "></i></a></div>
+</div>

@@ -1,0 +1,32 @@
+<div class="m-3 border">
+
+
+    <p class="m-3 fs-4 text-primary"><i class="bi bi-info-lg "></i>Information du Categorie</p>
+    <form class="col" (ngSubmit)="saveTypeTicket()" >
+
+        <div class="mb-3">
+            <label class="form-label">Nom</label>
+            <input disabled type="text" class="form-control"  name="type" placeholder="Nom" [(ngModel)]="typeTicket.type" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Ville</label>
+            <input type="text" class="form-control" name="ville" placeholder="ville" [(ngModel)]="typeTicket.ville">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Montant Enfant</label>
+            <input type="text" class="form-control" name="montantEnfant" placeholder="Montant Enfant" [(ngModel)]="typeTicket.montantEnfant">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Montant Adulte</label>
+            <input type="text" class="form-control"name="montantAdulte" placeholder="Montant Adulte" [(ngModel)]="typeTicket.montantAdulte" >
+        </div>
+<div class="m-3 d-flex justify-content-end ">
+    <button class="btn btn-sm btn-danger me-4" [routerLink]="['/categories']" routerLinkActive="router-link-active"><i
+            class="bi bi-x-circle me-2"></i>Annuler</button>
+    <button type="submit" class="btn btn-sm btn-primary me-3" ><i
+            class="bi bi-save me-2"></i>Enregistrer</button>
+</div>
+    </form>
+   
+</div>
+<!-- BUTTONS -->

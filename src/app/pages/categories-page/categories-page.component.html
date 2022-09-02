@@ -1,0 +1,27 @@
+<div class="row d-flex justify-content-md-between my-3 ">
+    <div class="col col-md-6 pl-5 lead" style="font-weight: 400;">les categories</div>
+    <div class="col col-md-6 text-center">
+        <app-action-button [isImporterVisible]="false" [isSupprimerVisible]="false" [isNouveauVisible]="false"  [isExporterVisible]="false"(clickEvent)="nouveauCategory()"></app-action-button>
+    </div>
+</div>
+<div>
+    <div class="col d-flex flex-row card py-4 pr-4 pe-2 ">
+    
+        <div class=" col-2 text-center  my-auto bold-style">Nom</div>
+        <div class="border"></div>
+        <div class=" col-3 text-center  my-auto bold-style">ville</div>
+        <div class="border"></div>
+        <div class=" col-2 text-center my-auto bold-style">Prix Adulte</div>
+        <div class="border"></div>
+        <div class=" col-2 text-center my-auto bold-style">Prix Enfant</div>
+        <div class="border"></div>
+        <div class=" col-3  text-center bold-style">
+            Actions
+        </div>
+    
+    </div>
+    <app-category-detail  (clickEvent)="refrechData()" *ngFor="let item of typeTickets" [typeTicket]="item" ></app-category-detail>
+    
+</div>
+<!-- PAGINATIONS -->
+

@@ -1,0 +1,27 @@
+<div class="brand text-center my-3">
+    OCP Gestion Tickets
+</div>
+<div id="accordion" class="mt-3" >
+    <div class="card accordion-item " *ngFor="let item of menu" >
+        <div class="card-header accordion-header " [attr.id]="'heading' + item.id ">
+            <h5 class="mb-0">
+                <button (click)="navigate(item.url)" class=" w-100 text-start {{item.menuItem ? 'accordion-button collapsed' : 'btn text-grey' }} " data-toggle="collapse" [attr.data-target]="'#collapse' + item.id" aria-expanded="true"
+                    [attr.aria-controls]="'collapse' + item.id">
+                     <a class="text-decoration-none text-style w-100"  >  {{item.titre}}</a>   
+                </button>
+            </h5>
+        </div>
+
+        <div [attr.id]="'collapse' + item.id" class="collapse " [attr.aria-labelledby]="'heading' + item.id " data-parent="#accordion">
+            <div class="card-body p-0">
+                <div class="card text-grey" *ngFor="let menuItem of item.menuItem" >
+                    <ul class="list-group list-group-flush w-100" (click)="navigate(menuItem.url)">
+                        <li class="list-group-item w-100" > 
+                            <a class="text-decoration-none btn text-start text-style w-100" >{{menuItem.titre}}</a>    
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

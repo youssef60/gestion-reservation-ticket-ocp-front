@@ -1,0 +1,552 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Swagger api for gestion reservation ocp",
+    "version" : "0.0.1-SNAPSHOT",
+    "title" : "Swagger api for gestion reservation ocp"
+  },
+  "basePath" : "http://localhost:20000",
+  "tags" : [ {
+    "name" : "apicollaborateurs"
+  }, {
+    "name" : "apiconjoints"
+  }, {
+    "name" : "apienfants"
+  }, {
+    "name" : "apiTicketApi"
+  }, {
+    "name" : "apiTypeTicket"
+  } ],
+  "paths" : {
+    "/api/collaborateurs" : {
+      "get" : {
+        "summary" : "voir la liste de tous les collaborateurs",
+        "description" : "",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des collaborateurs",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Collaborateur"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "apicollaborateurs" ],
+        "summary" : "enregistrer un collaborateur",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Collaborateur"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Collaborateur"
+            }
+          },
+          "201" : {
+            "description" : "collaborateur a été enregistrer avec succes"
+          }
+        }
+      }
+    },
+    "/api/collaborateurs/" : {
+      "delete" : {
+        "summary" : "supprimer tous les collaborateurs",
+        "description" : "",
+        "operationId" : "deleteAll",
+        "responses" : {
+          "200" : {
+            "description" : "la liste des collaborateurs a été supprimer "
+          }
+        }
+      }
+    },
+    "/api/collaborateurs/{matricule}" : {
+      "get" : {
+        "summary" : "trouver  un collaborateur par matricule",
+        "description" : "",
+        "operationId" : "findCollaborateurByMatricule",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "collaborateur a été trouvé ",
+            "schema" : {
+              "$ref" : "#/definitions/Collaborateur"
+            }
+          }
+        }
+      }
+    },
+    "/api/conjoints" : {
+      "get" : {
+        "tags" : [ "apiconjoints" ],
+        "summary" : "voir la liste de tous les conjointes",
+        "description" : "",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des Conjointes",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Conjoint"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "enregistrer une conjointe",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Conjoint"
+            }
+          },
+          "201" : {
+            "description" : "conjoint a été enregistré"
+          }
+        }
+      }
+    },
+    "/api/conjoints/{id}" : {
+      "delete" : {
+        "summary" : "supprimer une conjointe",
+        "description" : "",
+        "operationId" : "deleteById",
+        "responses" : {
+          "200" : {
+            "description" : "conjoint a été supprimer"
+          }
+        }
+      }
+    },
+    "/api/conjoints/{matricule}" : {
+      "get" : {
+        "tags" : [ "apiconjoints" ],
+        "summary" : "trouver une conjointe par id",
+        "description" : "",
+        "operationId" : "findAllByMatricule",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "matricule",
+          "in" : "path",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des conjointes par matricule",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Conjoint"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/enfants" : {
+      "get" : {
+        "summary" : "trouver tous les enfants  ",
+        "description" : "",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des enfants ",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Enfant"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "enregistrer un enfant",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Enfant"
+            }
+          },
+          "201" : {
+            "description" : "enfant a été enregistré"
+          }
+        }
+      }
+    },
+    "/api/enfants/{id}" : {
+      "delete" : {
+        "summary" : "supprimer un enfant",
+        "description" : "",
+        "operationId" : "deleteById",
+        "responses" : {
+          "200" : {
+            "description" : "enfant a été supprimé"
+          }
+        }
+      }
+    },
+    "/api/enfants/{matricule}" : {
+      "get" : {
+        "tags" : [ "apienfants" ],
+        "summary" : "trouver tous les enfants par matricule ",
+        "description" : "",
+        "operationId" : "findAllByMatricule",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des enfants par matricule",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Enfant"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/tickets" : {
+      "get" : {
+        "summary" : "trouver tous les tickets ",
+        "description" : "",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des tickets",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Ticket"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "summary" : "enregistrer un ticket",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/Ticket"
+            }
+          },
+          "201" : {
+            "description" : "ticket a été crée"
+          }
+        }
+      }
+    },
+    "/api/tickets/{id}" : {
+      "get" : {
+        "tags" : [ "apiTicketApi" ],
+        "summary" : "touver un ticket par id ",
+        "description" : "",
+        "operationId" : "findById",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "ticket a été trouvé par l'id",
+            "schema" : {
+              "$ref" : "#/definitions/Ticket"
+            }
+          }
+        }
+      },
+      "delete" : {
+        "summary" : "supprimer  un ticket",
+        "description" : "",
+        "operationId" : "deleteById",
+        "responses" : {
+          "200" : {
+            "description" : "ticket a été supprimé"
+          }
+        }
+      }
+    },
+    "/api/tickets/{matricule}" : {
+      "get" : {
+        "summary" : "trouver tous les tickets par matricule ",
+        "description" : "",
+        "operationId" : "findAllByMatricule",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "list des tickets par matricule",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Ticket"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/typeTicket" : {
+      "post" : {
+        "tags" : [ "apiTypeTicket" ],
+        "summary" : "enregistrer un type ticket",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/TypeTicket"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/TypeTicket"
+            }
+          },
+          "201" : {
+            "description" : "type ticket a été crée"
+          }
+        }
+      }
+    },
+    "/api/typeTicket/type" : {
+      "get" : {
+        "summary" : "trouver tous les typeTicket par type ",
+        "description" : "",
+        "operationId" : "findTypeTicketByType",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des Type tickets par Type",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        }
+      }
+    },
+    "/api/typeTicket/{id}" : {
+      "delete" : {
+        "summary" : "supprimer  un type ticket",
+        "description" : "",
+        "operationId" : "deleteById",
+        "responses" : {
+          "200" : {
+            "description" : "type ticket a été supprimé"
+          }
+        }
+      }
+    },
+    "/api/typeTickets" : {
+      "get" : {
+        "summary" : "trouver tous les type tickets ",
+        "description" : "",
+        "operationId" : "findAll",
+        "produces" : [ "application/json" ],
+        "responses" : {
+          "200" : {
+            "description" : "la liste des type tickets",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/TypeTicket"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Collaborateur" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "matricule" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "cin" : {
+          "type" : "string"
+        },
+        "conjoints" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Conjoint"
+          }
+        },
+        "enfants" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Enfant"
+          }
+        },
+        "tickets" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ticket"
+          }
+        },
+        "nom" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Conjoint" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "matricule" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "collaborateur" : {
+          "$ref" : "#/definitions/Collaborateur"
+        },
+        "nom" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Enfant" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "matricule" : {
+          "type" : "string"
+        },
+        "prenom" : {
+          "type" : "string"
+        },
+        "dateNaissance" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "collaborateur" : {
+          "$ref" : "#/definitions/Collaborateur"
+        },
+        "nom" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Ticket" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "matricule" : {
+          "type" : "string"
+        },
+        "nbrTicketAdulte" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "nbrTicketEnfant" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "prisLeTicket" : {
+          "type" : "boolean"
+        },
+        "collaborateur" : {
+          "$ref" : "#/definitions/Collaborateur"
+        },
+        "typeTicket" : {
+          "$ref" : "#/definitions/TypeTicket"
+        }
+      }
+    },
+    "TypeTicket" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "montantEnfant" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "montantAdulte" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "type" : {
+          "type" : "string"
+        },
+        "ville" : {
+          "type" : "string"
+        },
+        "tickets" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ticket"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div class=" d-flex justify-content-around" >
+    <button *ngIf="isNouveauVisible"  type="button"  (click)="nouveauButtonClicked()" class="text-light fst-normal  btn btn-sm btn-info" style="font-weight: 500;"  ><i class="bi bi-plus me-2"></i>Nouveau</button>
+    <!-- <button *ngIf="isImporterVisible" type="file" class="btn btn-sm btn-success" style="font-weight: 500;" ><i class="bi bi-upload me-2"></i>Importer</button> -->
+   
+    <label class="btn"  style="font-weight: 500;" *ngIf="isImporterVisible" for="inputTag" class="btn btn-sm btn-success">
+        <i class="bi bi-upload me-2"></i>
+        Importer 
+        <input id="inputTag"  (change)="onFileChange($event)" type="file" />
+    </label>
+  
+    <button *ngIf="isExporterVisible" (click)="exportData()" type="button" class="btn btn-sm btn-warning  " style="font-weight: 500;" ><i class="bi bi-download me-2"></i>Exporter</button>
+    <button *ngIf="isExporterDernierVisible" (click)="exportDataDernier()" type="button" class="btn btn-sm btn-warning  " style="font-weight: 500;" ><i class="bi bi-download me-2"></i>Exporter les tickets d'aujourd'hui</button>
+
+    <button *ngIf="isSupprimerVisible"   type="button" class="btn btn-sm btn-danger "  (click)="supprimerTousButton()"  style="font-weight: 500;"><i class="bi bi-trash me-2"></i>Supprimer Tous</button>
+    
+</div>

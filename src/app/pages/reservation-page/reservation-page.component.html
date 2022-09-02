@@ -1,0 +1,56 @@
+<div class="background-grey">
+
+
+<div class="card mb-3" style="min-height: 50px;">
+    <app-header (searchEvent)="search($event)" ></app-header>
+</div>
+<div class="row d-flex justify-content-md-between my-3 ">
+    <div class="col col-md-6 pl-5 lead" style="font-weight: 400;">Reserver Des Tickets</div>
+    <div class="col col-md-6 text-center">
+        <!-- <app-action-button ></app-action-button> -->
+    </div>
+</div>
+<div>
+    <ng-container *ngFor="let collaborateur of collaborateurs">
+        <div *ngIf="searchText == '' || collaborateur?.matricule?.includes(searchText)"  class="accordion mt-1" [attr.id]="'accordion' + collaborateur.matricule">
+            <div *ngIf="collaborateur.prisMaxTicket == false" [class]="collaborateur.prisTicket ? 'light-blue-color' : 'grey'" class="accordion-item" >
+                <h2 class="accordion-header" [attr.id]="'headingOne' + collaborateur.matricule">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne1' + collaborateur.matricule"
+                        aria-expanded="true" [attr.aria-controls]="'collapseOne1' + collaborateur.matricule">
+                        <div class="col d-flex">
+                            
+                            <div class="col col-md-3 text-center text-style">
+                                collaborateur
+                            </div>
+                            <div class="border"></div>
+                            <div class="col col-md-3 text-center text-style">
+                                {{collaborateur.matricule}}
+                            </div>
+                            <div class="border"></div>
+                            <div class="col col-md-3 text-center text-style">
+                                {{collaborateur.nom}}
+                            </div>
+                            <div class="border"></div>
+                            <div class="col col-md-3 text-center text-style">
+                                {{collaborateur.prenom}}
+                            </div>
+                            
+                        </div>
+                    </button>
+                </h2>
+                <div [attr.id]="'collapseOne1' + collaborateur.matricule" class="accordion-collapse collapse " [attr.aria-labelledby]="'headingOne' + collaborateur.matricule"
+                    [attr.data-bs-parent]="'#accordion' + collaborateur.matricule">
+                    <div class="accordion-body">
+                        <app-reservation-detail  [collaborateur]="collaborateur" ></app-reservation-detail>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </ng-container>
+    
+</div>
+<!-- PAGINATIONS -->
+
+<!-- <app-pagination></app-pagination> -->
+</div>

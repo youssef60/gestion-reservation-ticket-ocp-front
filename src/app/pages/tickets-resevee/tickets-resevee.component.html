@@ -1,0 +1,34 @@
+<div class="card mb-3" style="min-height: 50px;">
+    <app-header (searchEvent)="search($event)"></app-header>
+</div>
+<div class="row d-flex justify-content-md-between my-3 ">
+    
+    <div class="col col-md-6 pl-5 lead" style="font-weight: 400;">Liste des Tickets résérves</div>
+    <div class="col col-md-6 text-center">
+        <app-action-button (exportEvent)="exporterTickets()" (exportDenierEvent)="exportAujourdhuiTicket()" [isExporterDernierVisible]="true" [isNouveauVisible]="false" [isSupprimerVisible]="false" [isImporterVisible]="false">
+        </app-action-button>
+    </div>
+</div>
+<div>
+    <div class="col d-flex flex-row card py-4 pr-4 pe-2 mb-2">
+        <div class=" col-1  my-auto text-center ">Mat</div>
+        <div class="border"></div>
+        <div class=" col-2 text-center  my-auto text-center ">Nom</div>
+        <div class="border"></div>
+        <div class=" col-2  my-auto text-center">Prenom</div>
+        <div class="border"></div>
+        <div class=" col-2  my-auto text-center">Categorie</div>
+        <div class="border"></div>
+        <div class=" col-1  my-auto text-center">Nᵒ Ad</div>
+        <div class="border"></div>
+        <div class=" col-1  my-auto text-center">Nᵒ Enf</div>
+        <div class="border"></div>
+        <div class=" col-2  my-auto text-center">total</div>
+        <div class="border"></div>
+        <div class=" col-1  my-auto text-center">Action</div>       
+    </div>
+    <ng-container *ngFor="let collaborateur of collaborateurs">
+        <app-tickets-reserves-detail *ngIf="searchText == '' || collaborateur?.matricule?.includes(searchText)" (clickEvent)="refechData()"  [collaborateur]="collaborateur" ></app-tickets-reserves-detail>
+    </ng-container>
+    </div>
+<!-- PAGINATIONS -->

@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #eff2f5 !important;
+}
+.height-600{
+    min-height: 600px;
+}
+.text-style {
+    font-size: 18px;
+    font-weight: 400;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+}
+.bold-style {
+    font-size: 19px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+@media print {
+    app-root>* {
+        display: none;
+    }
+
+    app-root app-print-layout {
+        display: block;
+    }
+}

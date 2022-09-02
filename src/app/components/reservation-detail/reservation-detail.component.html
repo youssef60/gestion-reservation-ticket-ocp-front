@@ -1,0 +1,88 @@
+<div *ngIf="collaborateur?.prisMaxTicket == false "  class="col ps-0 border-top pe-0"  >
+    <form  [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+        <div *ngIf="!collaborateur.prisMaxTicket" class="col-md-12 d-flex my-3 ps-0 ">
+            <div class="col-md-3 text-center text-style">collaborateur </div>
+            <div class="border"></div>
+            <div class="col-md-3 text-center text-style ">{{collaborateur.matricule}} </div>
+            <div class="border"></div>
+            <div class="col-md-3 text-center text-style "> {{collaborateur.nom}} </div>
+            <div class="border"></div>
+            <div class="col-md-3 text-center text-style">{{collaborateur.prenom}}</div>
+            <div class="border"></div>
+     
+         
+        </div>
+        <div class="col-md-12 border mb-3 "></div>
+        
+        <!-- CONJOINTS  -->
+        <app-conjoint-reservation-detail *ngFor="let item of collaborateur?.conjoints" [conjoint]="item">
+        </app-conjoint-reservation-detail>
+        <div class="col-md-12 border mb-3 "></div>
+        
+        
+        <!-- ENFANTS -->
+        <app-reservation-enfant-detail *ngFor="let item of collaborateur?.enfants" [enfant]="item">
+        </app-reservation-enfant-detail>
+        
+        
+        
+        <div class="col-md-12 border my-3"></div>
+        
+        <!-- RESEVATION  -->
+     
+
+        <div class=" col-12 d-flex ps-0 mb-3"  >
+            <div class="col-3 my-auto text-center text-style">
+                AquaParc
+            </div>
+            <div class="col-3 d-flex my-auto">
+                <span class="me-2 my-auto text-style" >Adulte</span>
+                <input (ngModelChange)="onChangeTotalAquaAd($event)"  [ngClass]="{'is-invalid': true && reservationForm.controls['aquaParcAdulte'].errors}" type="number" formControlName="aquaParcAdulte" class="form-control"  >
+        
+            </div>
+            <div class="col-3 d-flex ">
+                <span class="me-2 my-auto text-style">Enfant</span>
+                <input (ngModelChange)="onChangeTotalAquaEn($event)" [attr.disabled]="reservationForm.controls['aquaParcEnfant'].errors?.['errorNullEnfant']" [ngClass]="{'is-invalid': true && reservationForm.controls['aquaParcEnfant'].errors?.['errorMaxAdulte']}" type="number" formControlName="aquaParcEnfant" class="form-control"  >
+            </div>
+            <div class=" my-auto col-3 text-center text-style">
+                Total : {{totalAqua}} Dh
+            </div>    
+        </div>
+
+        <div class=" col-12 d-flex ps-0 mb-3">
+            <div class="col-3 my-auto text-center text-style">
+                Dino
+            </div>
+            <div class="col-3 d-flex my-auto">
+                <span class="me-2 my-auto text-style ">Adulte</span>
+                <input (ngModelChange)="onChangeTotalDinoAd($event)"  [ngClass]="{'is-invalid': true && ( reservationForm.controls['dinoAdulte'].errors || reservationForm.errors?.['errorMaxAdulte'] )}" type="number" formControlName="dinoAdulte" class="form-control" >
+        
+            </div>
+            <div class="col-3 d-flex ">
+                <span class="me-2 my-auto text-style ">Enfant</span>
+                <input (ngModelChange)="onChangeTotalDinoEn($event)" [attr.disabled]="reservationForm.controls['aquaParcEnfant'].errors?.['errorNullEnfant']"  [ngClass]="{'is-invalid': true && ( reservationForm.controls['dinoEnfant'].errors?.['errorMaxAdulte']  || reservationForm.errors?.['errorMaxEnfant'] )}" type="number" formControlName="dinoEnfant"  class="form-control">
+            </div>
+            <div class=" my-auto col-3 text-center text-style ">
+                Total : {{totalDino}} dh
+            </div>
+        </div>
+        
+       
+        <!-- TERMINER -->
+   
+        <div class="col-md-12 border my-3"></div>
+        <ng-container *ngFor="let ticket of collaborateur?.tickets">
+            
+            <p *ngIf="ticket.typeTicket?.type == 'Dino'" >
+                Dino : Num Ad : {{ticket.nbrTicketAdulte}} &nbsp;&nbsp; Num Enf : {{ticket.nbrTicketEnfant}}
+            </p> 
+            <p *ngIf="ticket.typeTicket?.type == 'AquaParc'">
+                AquaParc : Num Ad : {{ticket.nbrTicketAdulte}} &nbsp;&nbsp; Num Enf : {{ticket.nbrTicketEnfant}}
+            </p>
+        </ng-container>
+        <div class="col text-center "> <input [attr.disabled]="reservationForm.errors" type="submit" value="Terminer" class="btn btn-primary"></div>
+    </form>
+     
+     <!-- <app-print-layout></app-print-layout> -->
+
+</div>

@@ -1,0 +1,38 @@
+<div class="d-flex justify-content-around m-4  " >
+    <div class="col-4 card " style="background-color: rgb(193, 239, 255);">
+        <p class="mx-auto mt-2 mb-0">Nombre des collaborateurs</p>
+        <p class="display-2  p-0 mx-auto" >{{nbrTotalCollaborateurs}}</p>
+    </div>
+    <div class="col-4 card" style="background-color: rgb(255, 219, 164);">
+        <p class="mx-auto mt-2 mb-0">Nombre des conjoints</p>
+        <p class="display-2  p-0 mx-auto">{{nbrTotalConjoints}}</p>
+    </div>
+    <div class="col-3 card" style="background-color: rgb(255, 179, 179);">
+        <p class="mx-auto mt-2 mb-0">Nombre des enfants</p>
+        <p class="display-2  p-0 mx-auto">{{nbrTotalEnfants}}</p>
+    </div>
+</div>
+<div class="col ">
+    <div class="border mt-2 p-2 w-75 h-75 mx-auto"   style="display: block;" >
+        <canvas baseChart 
+          [data]="pieChartData"
+          [labels]="pieChartLabels"
+          [chartType]="pieChartType"
+          [colors]="pieChartColors"
+        ></canvas>
+        <div class="mt-2 ms-2">
+            Nombre Total des tickets Dino : {{nbrTotalDino}}
+        </div>
+        <div class=" ms-2">
+            Nombre Total des tickets AquaParc : {{nbrTotalAqua}}
+        </div>
+    </div>
+</div>
+
+<div class="col ">
+    <div class="border mt-2 p-2 w-75  mx-auto" style="display: block;">
+        <canvas baseChart #BaseChartDirective [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+   [legend]="barChartLegend" [chartType]="barChartType">
+        </canvas>
+    </div>
+</div>

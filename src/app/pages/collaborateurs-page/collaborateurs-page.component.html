@@ -1,0 +1,36 @@
+<div class="card mb-3" style="min-height: 50px;">
+    <app-header (searchEvent)="search($event)"></app-header>
+</div>
+<div class="row d-flex justify-content-md-between my-3 ">
+    <div class="col col-md-6 pl-5 lead" style="font-weight: 400;" >Liste des collaborateurs</div>
+    <div class="col col-md-6 text-center" >
+        <app-action-button [isNouveauVisible]="false" (exportEvent)="exporterCollaborateurs()" (supprimerTousEvent)="supprimerTousLesCollaborateurs()" (importEvent)="getCollaborateursFromExcel($event)"  ></app-action-button>
+    </div>
+    
+</div>
+    <ng-container *ngFor="let error of errors" >
+        <div *ngIf="error.errorCodes" class="col  alert alert-danger">    
+            {{ error.errorCodes }} <br>
+            <ng-container *ngFor="let error of error.errors">
+                {{error}} <br>
+            </ng-container>
+            <ng-container *ngIf="error.message == 'could not execute statement; SQL [n/a]; constraint [PRIMARY]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement'">
+                matricule est dupliqué    
+            </ng-container>
+        </div>
+    </ng-container>
+<div  >
+    <div class="col d-flex flex-row card py-4 pr-4 pe-2 mb-2">
+        <div class=" col-3  my-auto text-center bold-style">Matricule</div>
+        <div class="border"></div>
+        <div class=" col-3 text-center  my-auto text-center bold-style">Nom</div>
+        <div class="border"></div>
+        <div class=" col-3  my-auto text-center bold-style">Prenom</div>
+        <div class="border"></div>
+        <div class=" col-3  my-auto text-center bold-style">Cin</div>
+    </div>
+    <ng-container *ngFor="let collaborateur of collaborateurs" >
+        <app-collaborateur-detail *ngIf="searchText == '' || collaborateur?.matricule?.includes(searchText)"   [collaborateur]="collaborateur" ></app-collaborateur-detail>
+    </ng-container>
+</div>
+<!-- PAGINATIONS -->
